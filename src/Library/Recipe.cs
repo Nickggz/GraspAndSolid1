@@ -11,9 +11,9 @@ namespace Full_GRASP_And_SOLID.Library
 {
     public class Recipe
     {
-        private ArrayList steps = new ArrayList();
-
-        public Product FinalProduct { get; set; }
+        public ArrayList steps = new ArrayList();   //En lugar de crear otro método para obtener los pasos, cambié la identidad "private" a "public"
+                                                   //Para poder utilizarlo en el método "CalculateEquipmentCost"
+        public Product FinalProduct { get; set; }   
 
         public void AddStep(Step step)
         {
@@ -33,6 +33,7 @@ namespace Full_GRASP_And_SOLID.Library
                 Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
                     $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
+            Console.WriteLine($"El costo total de la receta es{CostCalculator.GetProductionCost(steps)}");
         }
     }
 }
